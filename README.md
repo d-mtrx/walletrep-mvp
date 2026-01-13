@@ -149,6 +149,3 @@ prisma/
 - API keys & rate limiting
 
 ---
-
-## 🛡️ License
-MIT

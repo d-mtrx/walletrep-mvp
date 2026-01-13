@@ -27,3 +27,24 @@ model WalletSignal {
 
   wallet   Wallet @relation(fields: [walletId], references: [id], onDelete: Cascade)
 }
+
+model WalletProfile {
+  id               String   @id @default(cuid())
+  address          String   @unique
+
+  firstSeen        DateTime
+  lastSeen         DateTime
+
+  txCount          Int
+  approxVolume     Float    // simple CRO in/out approximation
+
+  tokensSeen       String[] // token contract addresses
+  contractsSeen    String[] // general contract interactions
+
+  source           String   // "cronos"
+  fetchedAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([address])
+}
+
